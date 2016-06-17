@@ -1,0 +1,20 @@
+{
+  "name": "angular-image",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-resource": "^1.5.7",
+    "angular-route": "^1.5.7",
+    "ejs": "^2.4.2",
+    "express": "^4.14.0",
+    "multer": "^1.1.0"
+  }
+}
