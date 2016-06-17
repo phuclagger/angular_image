@@ -12,13 +12,13 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + '/public/views/index.html');
 });
 
-app.post('/image/upload', upload.single('uploadedImage'), function(req, res){
+app.post('/image/upload', upload.single('file'), function(req, res, next){
     var extension = req.file.mimetype.split('/')[1];
     console.log(imagePath + req.file.originalname);
     fs.readFile(req.file.path, function(err, data){
-            fs.writeFile(imagePath + req.file.originalname, data, function(err){                
-            res.redirect('/#!/main');
-         });
+        fs.writeFile(imagePath + req.file.originalname, data, function(err){   
+            res.sendStatus(200);           
+        });
     });
 
     

@@ -1,7 +1,8 @@
 <h3>Hi, {{$ctrl.userName}}</h3>
 <h2>Image Upload!</h2>
 
-<form action="/image/upload" method="POST" enctype="multipart/form-data" >
-    <input type="file" name="uploadedImage" accept="image/*">
-    <input type="submit">
+
+<form>
+    <input type="file" name="uploadedImage" accept="image/*" image-model="uploadedImage">
+    <button ng-click="$ctrl.uploadImage()">Upload</button>
 </form>
