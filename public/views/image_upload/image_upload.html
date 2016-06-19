@@ -1,8 +1,60 @@
-<h3>Hi, {{$ctrl.userName}}</h3>
-<h2>Image Upload!</h2>
+<div class="container">
+    <h3>Hi, {{$ctrl.userName}}</h3>
+    <h2>Image Upload!</h2>
+    <form>
+        <input type="file" name="uploadedImage" accept="image/*" image-model="uploadedImage">
+        <input type="hidden" name="uploader" value="{{$ctrl.userName}}"><br>
+        <button ng-click="$ctrl.uploadImage()">Upload</button>
+    </form>
 
-
-<form>
-    <input type="file" name="uploadedImage" accept="image/*" image-model="uploadedImage">
-    <button ng-click="$ctrl.uploadImage()">Upload</button>
-</form>
+    <br><br>
+    <h2>List of Images</h2>
+    <form>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                <input type="text" class="form-control" placeholder="Search name" ng-model="searchString">
+            </div>      
+        </div>
+  </form>
+    <h3>Total Images: {{images.length}}</h3>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Image</td>
+                <td>
+                    <a ng-click="sortType = 'filename'; sortReverse = !sortReverse" style="cursor:pointer">Name</a>
+                    <span ng-show="sortType == 'filename' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'filename' && sortReverse" class="fa fa-caret-up"></span>
+                </td>
+                <td>
+                    <a ng-click="sortType = 'uploader'; sortReverse = !sortReverse" style="cursor:pointer">Uploader</a>
+                    <span ng-show="sortType == 'uploader' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'uploader' && sortReverse" class="fa fa-caret-up"></span>
+                </td>
+                <td>
+                    <a ng-click="sortType = 'uploadDate'; sortReverse = !sortReverse" style="cursor:pointer">Upload Date</a>
+                    <span ng-show="sortType == 'uploadDate' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'uploadDate' && sortReverse" class="fa fa-caret-up"></span>
+                </td>
+            </tr>
+        </thead>
+        <tr ng-repeat="img in filteredImages  | orderBy:sortType:sortReverse | filter:searchString">
+            <td>{{img.id}}</td>
+            <td><img ng-src="/images/{{img.url}}" width="100" height="100" data-zoom-image="/images/{{img.url}}" class="zoom-img"></td>
+            <td>{{img.filename}}</td>
+            <td>{{img.uploader}}</td>
+            <td>{{img.uploadDate}}</td>
+        </tr>
+    </table>
+    <pagination 
+      ng-model="currentPage"
+      total-items="images.length"
+      max-size="maxSize"  
+      boundary-links="true"
+      items-per-page="numPerPage">
+    </pagination>                
+        <img class="zoom-img" ng-src="/images/1466313559534-kek.jpg" data-zoom-image="/images/1466313559534-kek.jpg" width="100" id="ang" />
+                
+</div>
