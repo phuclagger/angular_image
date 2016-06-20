@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <title>Sample Image App</title>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.2.0/sandstone/bootstrap.min.css">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">  
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/igorlino/elevatezoom-plus/1.1.6/src/jquery.ez-plus.js"></script>        
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../image_zoom.css">   
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>         
     <script src="../angular/angular.min.js"></script>
     <script data-require="ui-bootstrap@*" data-semver="0.12.1" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.min.js"></script>
     <script src="../angular-resource/angular-resource.min.js"></script>
@@ -27,11 +27,6 @@
 <body>    
     <div ng-view></div>
     <!--<img class="zoom-img" ng-src="/images/1466313559534-kek.jpg" data-zoom-image="/images/1466313559534-kek.jpg" width="100" id="norm" />-->
-    <script>        
-        $(document).ready(function(){                                                              
-            $(".zoom-img").ezPlus(); 
-        });       
-     </script>
 </body>
 
 </html>

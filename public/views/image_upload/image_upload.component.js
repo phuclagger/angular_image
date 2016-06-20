@@ -16,7 +16,11 @@ angular.module('imageUpload').component('imageUpload', {
         $scope.currentPage = 1;
         $scope.numPerPage = 5;
         $scope.maxSize = 5;
-            
+
+        self.setImage = function setImage(imageUrl) {
+            self.mainImage = imageUrl;
+        };        
+                
         var getImage = function () {
             $http.get('/imageList').then(function(res){
                 self.images = res.data; 
@@ -24,7 +28,8 @@ angular.module('imageUpload').component('imageUpload', {
                 $scope.$watch('currentPage + numPerPage', function () {                            
                     var begin = (($scope.currentPage - 1) * $scope.numPerPage);
                     var end = begin + $scope.numPerPage;            
-                    $scope.filteredImages = $scope.images.slice(begin, end);                                   
+                    $scope.filteredImages = $scope.images.slice(begin, end);     
+                    self.setImage($scope.filteredImages[0]);                              
                  });        
                                     
             });        

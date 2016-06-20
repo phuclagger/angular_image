@@ -1,23 +1,34 @@
 <div class="container">
+
     <h3>Hi, {{$ctrl.userName}}</h3>
+    <div class="col-lg-6">
     <h2>Image Upload!</h2>
-    <form>
-        <input type="file" name="uploadedImage" accept="image/*" image-model="uploadedImage">
-        <input type="hidden" name="uploader" value="{{$ctrl.userName}}"><br>
-        <button ng-click="$ctrl.uploadImage()">Upload</button>
-    </form>
+        <form>
+            <input type="file" name="uploadedImage" accept="image/*" image-model="uploadedImage">
+            <input type="hidden" name="uploader" value="{{$ctrl.userName}}"><br>
+            <button ng-click="$ctrl.uploadImage()">Upload</button>
+        </form>
+    </div>
+    <div class="col-lg-4 col-lg-offset-2">
+        <!--<img ng-src="/images/{{$ctrl.mainImage.url}}" width="300" image-zoom zoom-factor="2">
+        <div image-src="http://localhost:8080/images/1466388907795-todd.jpg" image-zoom></div>-->
+    <div class="image">
+        <img src="/images/{{$ctrl.mainImage.url}}" alt="Some awesome text" width="200"/>
+    </div>      
+    </div>
 
     <br><br>
-    <h2>List of Images</h2>
+    <h2>List of Images (Total Images: {{images.length}})</h2>
     <form>
-        <div class="form-group">
+        <div class="form-group col-lg-5">
             <div class="input-group">
                 <div class="input-group-addon"><i class="fa fa-search"></i></div>
                 <input type="text" class="form-control" placeholder="Search name" ng-model="searchString">
             </div>      
         </div>
-  </form>
-    <h3>Total Images: {{images.length}}</h3>
+     </form>
+     
+    
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -42,7 +53,7 @@
         </thead>
         <tr ng-repeat="img in filteredImages  | orderBy:sortType:sortReverse | filter:searchString">
             <td>{{img.id}}</td>
-            <td><img ng-src="/images/{{img.url}}" width="100" height="100" data-zoom-image="/images/{{img.url}}" class="zoom-img"></td>
+            <td><img ng-src="/images/{{img.url}}" width="100" height="100" data-zoom-image="/images/{{img.url}}" class="zoom-img" ng-click="$ctrl.setImage(img)"></td>
             <td>{{img.filename}}</td>
             <td>{{img.uploader}}</td>
             <td>{{img.uploadDate}}</td>
@@ -55,6 +66,5 @@
       boundary-links="true"
       items-per-page="numPerPage">
     </pagination>                
-        <img class="zoom-img" ng-src="/images/1466313559534-kek.jpg" data-zoom-image="/images/1466313559534-kek.jpg" width="100" id="ang" />
                 
 </div>
