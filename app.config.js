@@ -10,5 +10,5 @@ angular.module('imageApp').config(['$locationProvider', '$routeProvider',
             }).
             when('/main', {
                 template: "WOWOWOWOWO"
-            }).otherwise('/');
+            }).otherwise('/');;
     }]);
